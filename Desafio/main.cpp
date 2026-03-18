@@ -4,24 +4,25 @@
 using namespace std;
 
 int main() {
-    int alto, ancho;
-
-    cout << "--- UdeA: Informatica II ---" << endl;
-    cout << "Ingrese alto (min 8): ";
-    cin >> alto;
-    cout << "Ingrese ancho (multiplo de 8): ";
-    cin >> ancho;
-
-    if (alto < 8 || ancho % 8 != 0) {
-        cout << "Dimensiones invalidas." << endl;
-        return 1;
-    }
-
+    int filas, columnas;
     unsigned char** tableroPrincipal = nullptr;
-    crearTablero(tableroPrincipal, alto, ancho);
 
-    cout << "\nVisualizacion Inicial:" << endl;
-    imprimirEstado(tableroPrincipal, alto, ancho);
+    cout << "Ingrese filas (minimo 8): ";
+    cin >> filas;
+    cout << "Ingrese columnas (multiplo de 8): ";
+    cin >> columnas;
+
+    if (filas >= 8 && columnas % 8 == 0) {
+        crearTablero(tableroPrincipal, filas, columnas);
+
+        cout << "\nTablero Inicializado (Logica de Bits):\n" << endl;
+        imprimirEstado(tableroPrincipal, filas, columnas);
+
+        liberarTablero(tableroPrincipal, filas);
+        cout << "\nMemoria liberada exitosamente." << endl;
+    } else {
+        cout << "Error: Dimensiones no validas." << endl;
+    }
 
     return 0;
 }
