@@ -4,25 +4,19 @@
 using namespace std;
 
 int main() {
-    int filas, columnas;
-    unsigned char** tableroPrincipal = nullptr;
+    int f = 10, c = 16;
+    unsigned char** juego = nullptr;
 
-    cout << "Ingrese filas (minimo 8): ";
-    cin >> filas;
-    cout << "Ingrese columnas (multiplo de 8): ";
-    cin >> columnas;
+    crearTablero(juego, f, c);
 
-    if (filas >= 8 && columnas % 8 == 0) {
-        crearTablero(tableroPrincipal, filas, columnas);
+    modificarCelda(juego, 5, 4, true);
+    modificarCelda(juego, 6, 4, true);
+    modificarCelda(juego, 7, 4, true);
+    modificarCelda(juego, 7, 5, true);
 
-        cout << "\nTablero Inicializado (Logica de Bits):\n" << endl;
-        imprimirEstado(tableroPrincipal, filas, columnas);
+    cout << "--- TETRIS BITWISE ---" << endl;
+    imprimirEstado(juego, f, c);
 
-        liberarTablero(tableroPrincipal, filas);
-        cout << "\nMemoria liberada exitosamente." << endl;
-    } else {
-        cout << "Error: Dimensiones no validas." << endl;
-    }
-
+    liberarTablero(juego, f);
     return 0;
 }
