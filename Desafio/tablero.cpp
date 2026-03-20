@@ -43,3 +43,29 @@ void liberarTablero(unsigned char** &tablero, int filas) {
     delete[] tablero;
     tablero = nullptr;
 }
+
+bool filaLlena(unsigned char** tablero, int fila, int columnas) {
+    int bytesPorFila = columnas / 8;
+    for (int j = 0; j < bytesPorFila; ++j) {
+        if (tablero[fila][j] != 255) return false;
+    }
+    return true;
+}
+
+void eliminarFila(unsigned char** tablero, int fila, int columnas) {
+    int bytesPorFila = columnas / 8;
+    for (int i = fila; i > 0; --i) {
+        for (int j = 0; j < bytesPorFila; ++j) {
+            tablero[i][j] = tablero[i-1][j];
+        }
+    }
+    for (int j = 0; j < bytesPorFila; ++j) tablero[0][j] = 0;
+}
+
+bool hayColision(unsigned char** tablero, int x, int y, int filas, int columnas) {
+    if (x < 0 || x >= filas || y < 0 || y >= columnas) return true;
+
+    int bytePos = y / 8;
+    int bitPos = 7 - (y % 8);
+    return (tablero[x][bytePos] >> bitPos) & 1;
+}

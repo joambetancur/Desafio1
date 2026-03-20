@@ -4,17 +4,23 @@
 using namespace std;
 
 int main() {
-    int f = 10, c = 16;
+    int f = 10, c = 8;
     unsigned char** juego = nullptr;
-
     crearTablero(juego, f, c);
 
-    modificarCelda(juego, 5, 4, true);
-    modificarCelda(juego, 6, 4, true);
-    modificarCelda(juego, 7, 4, true);
-    modificarCelda(juego, 7, 5, true);
+    for(int i = 0; i < 8; i++) {
+        modificarCelda(juego, 9, i, true);
+    }
 
-    cout << "--- TETRIS BITWISE ---" << endl;
+    cout << "TABLERO CON FILA COMPLETA:" << endl;
+    imprimirEstado(juego, f, c);
+
+    if (filaLlena(juego, 9, c)) {
+        cout << "\nFILA COMPLETADA Eliminando..." << endl;
+        eliminarFila(juego, 9, c);
+    }
+
+    cout << "\nTABLERO DESPUES DE ELIMINAR:" << endl;
     imprimirEstado(juego, f, c);
 
     liberarTablero(juego, f);
