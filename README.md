@@ -1,6 +1,7 @@
 # Desafío 1 - Informatica II
 **Estudiante:** Joan Esteban Betancur Cadavid  <br>
-**Institución:** Universidad de Antioquia (UdeA)
+**Institución:** Universidad de Antioquia (UdeA) <br>
+**Enlace a video YouTube:** https://youtu.be/5ZBTwZh0kCk 
 
 ## Descripción
 Este repositorio contiene el desarrollo del primer desafío del curso, centrado en la implementacion de un sistema de bits para un juego de Tetris. 
